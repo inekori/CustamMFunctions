@@ -1,0 +1,5 @@
+let
+    MonthFrac = (StartDate as date, EndDate as date) as number => 
+    Date.Year(EndDate)*12 + Date.Month(EndDate) + Date.Day(EndDate)/Date.DaysInMonth(EndDate) - (Date.Year(StartDate)*12 + Date.Month(StartDate) + Date.Day(StartDate)/Date.DaysInMonth(StartDate))
+in
+    MonthFrac
