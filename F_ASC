@@ -5,19 +5,15 @@ let
     ),
     ReplacedText = (
         List.Accumulate(Text.ToList(OriginalText),"",(state, current) => 
-            if Text.End(state,1) = "ﾞ" or Text.End(state,1) ="ﾟ"
+            if
+                Text.End(state,1) = "ﾞ" or Text.End(state,1) ="ﾟ"
             then 
                 Text.Start(state,Text.Length(state)-2) &
-
-                List.Single(
-                    List.ReplaceMatchingItems({Text.End(state,2)},L_Combination)
-                ) &
-
+                List.Single(List.ReplaceMatchingItems({Text.End(state,2)},L_Combination)) &
                 List.Single(List.ReplaceMatchingItems({current},L_Combination))
             else
                 state & List.Single(List.ReplaceMatchingItems({current},L_Combination))
         )
     )
-
 in
     ReplacedText
